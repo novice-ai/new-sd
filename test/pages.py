@@ -599,7 +599,7 @@ class Instructions(Page):
         third_stage_start = (self.subsession.num_first_stage_rounds + self.subsession.num_second_stage_rounds)
         fourth_stage_start = (
             self.subsession.num_first_stage_rounds + self.subsession.num_second_stage_rounds + self.subsession.num_third_stage_rounds)
-        return self.round_number == second_stage_start or self.round_number == third_stage_start or self.round_number == fourth_stage_start ##WW:commented out or self.round_number == self.subsession.num_rounds" 
+        return self.round_number == 1 or self.round_number == 1+self.subsession.num_first_stage_rounds or  self.round_number == 1+self.subsession.num_first_stage_rounds + self.subsession.num_second_stage_rounds or self.round_number == 1+self.subsession.num_first_stage_rounds + self.subsession.num_second_stage_rounds+self.subsession.num_third_stage_rounds
 
     def vars_for_template(self):
 
