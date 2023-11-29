@@ -687,8 +687,8 @@ class Results(Page):
         your_payoff = ""
         their_payoff = ""  
         if self.player.id_in_group == 1:
-            your_payoff = "您於本回合的應徵聘僱決策獲得 "+  str(self.group.firm_normal_payoff)+"。"
-            their_payoff = "雇主於本回合的應徵聘僱決策獲得 "+str(self.group.worker_normal_payoff)+"。"
+            your_payoff = "您於本回合的應徵聘僱決策獲得 "+  str(self.group.worker_normal_payoff)+"。"
+            their_payoff = "雇主於本回合的應徵聘僱決策獲得 "+str(self.group.firm_normal_payoff)+"。"
             if self.group.firm_hire:
                 their_decision = "雇主決定錄取您。"
             else: 
