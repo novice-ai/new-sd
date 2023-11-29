@@ -699,7 +699,6 @@ class Results(Page):
                 your_decision = "您決定投入受訓。"
             else: 
                 your_decision = "您決定不投入受訓。"
-                your_payoff = ""
         elif self.player.id_in_group == 2:
             your_payoff = "您於本回合的應徵聘僱決策獲得 "+  str(self.group.firm_normal_payoff)+"。"
             their_payoff = "求職者於本回合的應徵聘僱決策獲得 "+str(self.group.worker_normal_payoff)+"。"
