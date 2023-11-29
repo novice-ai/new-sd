@@ -612,10 +612,12 @@ class Instructions(Page):
             self.subsession.num_first_stage_rounds + self.subsession.num_second_stage_rounds + self.subsession.num_third_stage_rounds)
         if self.round_number == second_stage_start:
                 instructions_text = "您即將進入實驗的第一階段。"
-                instructions_text_2 = "本階段 GREEN 求職者的受訓成本為 200 法幣 (c = 200)，PURPLE 求職者的受訓成本為 600 法幣 (c = 600)。"   
+                instructions_text_2 = "本階段 GREEN 求職者的受訓成本為 200 法幣 (c = 200)，PURPLE 求職者的受訓成本為 600 法幣 (c = 600)。"  
+                instructions_text_3 = "本階段雇主<b>可以看見</b>配對到的求職者之類別。" 
         elif self.round_number == third_stage_start:
                 instructions_text = "您即將進入實驗的第二階段。"
                 instructions_text_2 = "本階段所有求職者的受訓成本為 200 法幣 (c = 200)。"
+                instructions_text_3 = "本階段雇主<b>可以看見</b>配對到的求職者之類別。"
         elif self.round_number == fourth_stage_start:
                   #WW: commented out "instructions_text = "You are entering Stage 3 of the experiment.""
                 instructions_text = "您即將進入實驗的第三階段。"
