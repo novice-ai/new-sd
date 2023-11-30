@@ -625,7 +625,7 @@ class Instructions(Page):
                 instructions_text_3 = "本階段雇主<b>不會看見</b>配對到的求職者之類別，但求職者可以決定主動<b>揭露</b>其類別，亦可<b>傳送</b>「我願意投入受訓」的訊息，訊息成本為 10 法幣。"
            
         elif self.round_number == 1+self.subsession.num_first_stage_rounds + self.subsession.num_second_stage_rounds+self.subsession.num_third_stage_rounds:
-             #WW: commented out "  instructions_text = "You have finished the main portion of the experiment.  You will now be asked to complete two short tasks.  One of these two tasks will be randomly selected for payment.  Your earnings from the randomly selected task will be added to your total earnings from the experiment.""
+        
                 instructions_text = "您即將進入實驗的第四階段。"
                 instructions_text_2 = "本階段所有求職者的受訓成本為 200 法幣 (c = 200)。"
                 instructions_text_3 = "本階段雇主<b>不會看見</b>配對到的求職者之類別，但求職者可以決定主動<b>揭露</b>其類別，亦可<b>傳送</b>「我願意投入受訓」的訊息，訊息成本為 10 法幣。"
