@@ -636,13 +636,13 @@ class Instructions(Page):
             'instructions_text_3': instructions_text_3
         }
 
-class Experiment_Wait(WaitPage):
-    wait_for_all_groups = True
-    title_text = ""
-    body_text = "實驗即將開始，請稍候，謝謝!"
-    def after_all_players_arrive(self):
-        for player in self.subsession.get_players():
-            player.set_payoffs()
+# class Experiment_Wait(WaitPage):
+#     wait_for_all_groups = True
+#     title_text = ""
+#     body_text = "實驗即將開始，請稍候，謝謝!"
+#     def after_all_players_arrive(self):
+#         for player in self.subsession.get_players():
+#             player.set_payoffs()
     
 class ResultsWaitPage(WaitPage):
     title_text = ""
@@ -650,10 +650,16 @@ class ResultsWaitPage(WaitPage):
     def after_all_players_arrive(self):
         self.group.set_payoffs()
 
+class SelfWaitPage(WaitPage):
+    title_text = ""
+    body_text = "正在計算您的報酬，請稍等，謝謝!"
+    def after_all_players_arrive(self):
+        self.player.set_payoffs()
+
 class SessionWideWaitPage(WaitPage):
     wait_for_all_groups = True
     title_text = ""
-    body_text = "請稍待其他玩家做決策，謝謝!"
+    body_text = "請稍待其他玩家，謝謝!"
     def after_all_players_arrive(self):
         # Iterate through all groups and call set_payoffs
         for player in self.subsession.get_players():
@@ -740,30 +746,40 @@ class Task_Intro(Page):
            # 'task_instructions_text_2': task_instructions_text_2,
             'task_instructions_text_3': task_instructions_text_3
         }
-
-class Worker_Task_1(Page):
+class Task_1(Page):
     def is_displayed(self):
-        return self.player.id_in_group == 1 and self.round_number == self.subsession.num_rounds     
-    form_model = 'group'
-    form_fields = ['worker_task_1']
+        return self.round_number == self.subsession.num_rounds     
+    form_model = 'player'
+    form_fields = ['task_1']
 
-class Worker_Task_2(Page):
+class Task_2(Page):
     def is_displayed(self):
-        return self.player.id_in_group == 1 and self.round_number == self.subsession.num_rounds
-    form_model = 'group'
-    form_fields = ['worker_task_2']
+        return self.round_number == self.subsession.num_rounds
+    form_model = 'player'
+    form_fields = ['task_2']
+# class Worker_Task_1(Page):
+#     def is_displayed(self):
+#         return self.player.id_in_group == 1 and self.round_number == self.subsession.num_rounds     
+#     form_model = 'group'
+#     form_fields = ['worker_task_1']
 
-class Firm_Task_1(Page):
-    def is_displayed(self):
-        return self.player.id_in_group == 2 and self.round_number == self.subsession.num_rounds
-    form_model = 'group'
-    form_fields = ['firm_task_1']
+# class Worker_Task_2(Page):
+#     def is_displayed(self):
+#         return self.player.id_in_group == 1 and self.round_number == self.subsession.num_rounds
+#     form_model = 'group'
+#     form_fields = ['worker_task_2']
 
-class Firm_Task_2(Page):
-    def is_displayed(self):
-        return self.player.id_in_group == 2 and self.round_number == self.subsession.num_rounds
-    form_model = 'group'
-    form_fields = ['firm_task_2']    
+# class Firm_Task_1(Page):
+#     def is_displayed(self):
+#         return self.player.id_in_group == 2 and self.round_number == self.subsession.num_rounds
+#     form_model = 'group'
+#     form_fields = ['firm_task_1']
+
+# class Firm_Task_2(Page):
+#     def is_displayed(self):
+#         return self.player.id_in_group == 2 and self.round_number == self.subsession.num_rounds
+#     form_model = 'group'
+#     form_fields = ['firm_task_2']    
 
 
 class Payoffs(Page):
@@ -801,6 +817,7 @@ class Payoffs(Page):
 
 page_sequence = [
     Begin_Experiment,
+    SessionWideWaitPage,
 #     Experiment_Wait,
     Instructions,
     Reveal_Signal,
@@ -809,12 +826,14 @@ page_sequence = [
     Firm,
     ResultsWaitPage,
     Results,
-    SessionWideWaitPage,
+    # SessionWideWaitPage,
     Task_Intro,
-    Worker_Task_1,
-    Firm_Task_1,
-    Worker_Task_2,    
-    Firm_Task_2,
-    SessionWideWaitPage,
+    # Worker_Task_1,
+    # Firm_Task_1,
+    # Worker_Task_2,    
+    # Firm_Task_2,
+    Task_1,
+    Task_2,
+    SelfWaitPage,
     Payoffs
 ]
