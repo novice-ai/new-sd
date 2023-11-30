@@ -746,28 +746,28 @@ class Task_Intro(Page):
            # 'task_instructions_text_2': task_instructions_text_2,
             'task_instructions_text_3': task_instructions_text_3
         }
-class Task_1(Page):
+# class Task_1(Page):
+#     def is_displayed(self):
+#         return self.round_number == self.subsession.num_rounds     
+#     form_model = 'player'
+#     form_fields = ['task_1']
+
+# class Task_2(Page):
+#     def is_displayed(self):
+#         return self.round_number == self.subsession.num_rounds
+#     form_model = 'player'
+#     form_fields = ['task_2']
+class Worker_Task_1(Page):
     def is_displayed(self):
         return self.round_number == self.subsession.num_rounds     
     form_model = 'player'
-    form_fields = ['task_1']
+    form_fields = ['worker_task_1']
 
-class Task_2(Page):
+class Worker_Task_2(Page):
     def is_displayed(self):
         return self.round_number == self.subsession.num_rounds
     form_model = 'player'
-    form_fields = ['task_2']
-# class Worker_Task_1(Page):
-#     def is_displayed(self):
-#         return self.player.id_in_group == 1 and self.round_number == self.subsession.num_rounds     
-#     form_model = 'group'
-#     form_fields = ['worker_task_1']
-
-# class Worker_Task_2(Page):
-#     def is_displayed(self):
-#         return self.player.id_in_group == 1 and self.round_number == self.subsession.num_rounds
-#     form_model = 'group'
-#     form_fields = ['worker_task_2']
+    form_fields = ['worker_task_2']
 
 # class Firm_Task_1(Page):
 #     def is_displayed(self):
@@ -828,12 +828,12 @@ page_sequence = [
     Results,
     # SessionWideWaitPage,
     Task_Intro,
-    # Worker_Task_1,
+    Worker_Task_1,
     # Firm_Task_1,
-    # Worker_Task_2,    
+    Worker_Task_2,    
     # Firm_Task_2,
-    Task_1,
-    Task_2,
+    # Task_1,
+    # Task_2,
     SelfWaitPage,
     Payoffs
 ]
